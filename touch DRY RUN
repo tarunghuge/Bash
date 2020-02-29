@@ -1,0 +1,54 @@
+cl="clear -x"
+$cl
+
+chd="cd $HOME/test/"
+$chd
+
+read -p "Enter your Release type -                              \\
+        1 : checkout                                    \\
+        2 : Pull        OPTION ->" xyz
+
+case "$xyz" in
+
+1)      read -p "Want to CHECKOUT? (yes): " n
+        yes=$(echo $n | tr -s '[:upper]' '[:lower]')
+        if [[  "$n" = 'yes'||'YES'  ]] ; then
+        echo '## NO SPACE IN BRANCH NAME & CTRL + D to EXIT'
+        echo
+        read -p "Copy Branch Here ->" advertbranch
+        chkot="touch $advertbranch"
+        $chkot
+        else
+                exit
+        fi
+         ;;
+
+2)      read -p "Want to PULL (yes): " n
+        yes=$(echo $n | tr -s '[:upper:]' '[:lower:]')
+        if [[ "$n" = 'yes'||'YES' ]] ; then
+        pul="touch ./pull"
+        $pul
+        else
+                end
+        fi
+        ;;
+
+*)      echo 'Please select a vaild option'
+        exit ;;
+
+esac
+
+#st="pm2 status"
+#$st
+
+#rst="pm2 restart IBC"
+#$rst
+
+while true ; do
+        echo
+        echo SLEEP FOR 5 SEC
+        sleep 5
+        cd ~/test/
+        ls -ls
+        exit
+done
