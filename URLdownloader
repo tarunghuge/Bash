@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CSV=urldownloader.csv
+
+[! -f $CSV] && {echo "$CSV File Not Found"; exit 99}
+
+while read url fname
+do
+        dwnt="curl $url --output $fname"
+        $dwnt
+done
+
+
+#awk -F "\"*,\"*" '{print $2}' textfile.csv
