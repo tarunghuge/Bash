@@ -1,54 +1,59 @@
-cl="clear -x"
-$cl
+chdir="clear -x"
+$chdir
 
-chd="cd $HOME/test/"
-$chd
+fetch="ls"
+$fetch
 
 read -p "Enter your Release type -                              \\
-        1 : checkout                                    \\
-        2 : Pull        OPTION ->" xyz
+        1 : Checkout                                    \\
+        2 : Pull        OPTION -> " xyz
 
 case "$xyz" in
 
-1)      read -p "Want to CHECKOUT? (yes): " n
-        yes=$(echo $n | tr -s '[:upper]' '[:lower]')
-        if [[  "$n" = 'yes'||'YES'  ]] ; then
-        echo '## NO SPACE IN BRANCH NAME & CTRL + D to EXIT'
+1)      read -p "Want to CHECKOUT? (yes/no): " n
+        yes=$(echo $n | tr -s '[:upper:]' '[:lower:]')
+        if [[  "$n" == 'yes'  ]] ; then
         echo
-        read -p "Copy Branch Here ->" advertbranch
+        echo '+++++  NO SPACE IN BRANCH NAME & CTRL + D to EXIT  +++++'
+        echo
+        read -p "Copy Branch Here -> " advertbranch
         chkot="touch $advertbranch"
         $chkot
         else
+                echo
+                echo ' +++++ ReRun the Script & Please select a vaild option  +++++'
                 exit
-        fi
-         ;;
+        fi ;;
 
-2)      read -p "Want to PULL (yes): " n
+
+2)      read -p "Want to PULL (yes/no): " n
         yes=$(echo $n | tr -s '[:upper:]' '[:lower:]')
-        if [[ "$n" = 'yes'||'YES' ]] ; then
+        if [[ "$n" == "yes" ]] ; then
         pul="touch ./pull"
         $pul
         else
-                end
-        fi
-        ;;
+                echo
+                echo  ' +++++ ReRun the Script & Please select a vaild option  +++++'
+                exit
+        fi ;;
 
-*)      echo 'Please select a vaild option'
-        exit ;;
+*)      echo
+        echo ' +++++ ReRun the Script & Please select a vaild option  +++++'
+        exit  ;;
 
 esac
 
-#st="pm2 status"
+
+#st="curl http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm"
 #$st
 
-#rst="pm2 restart IBC"
-#$rst
+rst="curl https://blog.feedspot.com/devops_blogs/ -o xxxxxxxxxxxxxxx.mp4"
+$rst
 
 while true ; do
         echo
         echo SLEEP FOR 5 SEC
         sleep 5
-        cd ~/test/
-        ls -ls
+        curl -I http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm
         exit
 done
