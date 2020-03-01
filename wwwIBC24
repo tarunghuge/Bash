@@ -1,4 +1,3 @@
-
 #!/bin/bash
 ##
 ## script to take release of WWW IBC24
@@ -13,8 +12,8 @@ $chd
 fetch="git fetch --all"
 $fetch
 
-read -p "Enter your Release type -                              \\
-        1 : checkout                                    \\
+read -p "Enter your WWW Release type -                              \\
+        1 : checkout                              		     \\
         2 : Pull        OPTION ->" xyz
 
 case "$xyz" in
@@ -27,19 +26,28 @@ case "$xyz" in
         read -p "Copy Branch Here ->" advertbranch
         chkot="git checkout $advertbranch"
         $chkot
-        fi
-        ;;
+        else
+                echo
+                echo ' +++++ ReRun the Script & Please select a vaild option  +++++'
+                exit
+        fi ;;
 
 
 2)      read -p "Want to PULL (yes): " n
-	yes=$(echo $n | tr -s '[:upper:]' '[:lower:]')
+        yes=$(echo $n | tr -s '[:upper:]' '[:lower:]')
         if [[ "$n" = "yes" ]] ; then
-        pul="touch ./pull"
+        pul="git pull"
         $pul
-        fi
-        ;;
+        else
+                echo
+                echo  ' +++++ ReRun the Script & Please select a vaild option  +++++'
+                exit
 
-*)      echo 'Please select a vaild option' ;;
+        fi ;;
+
+*)      echo
+        echo ' +++++ ReRun the Script & Please select a vaild option  +++++'
+        exit  ;;
 
 esac
 
@@ -51,10 +59,9 @@ rst="pm2 restart IBC"
 $rst
 
 while true ; do
-	echo
+        echo
         echo SLEEP FOR 5 SEC
         sleep 5
         pm2 status
         exit
 done
-
