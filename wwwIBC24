@@ -1,6 +1,7 @@
 #!/bin/bash
 ##
 ## script to take release of WWW IBC24
+## Tarun Ghuge
 ######################################################
 
 cl="clear -x"
