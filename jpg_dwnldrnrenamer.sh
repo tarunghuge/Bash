@@ -1,5 +1,5 @@
-##		Bash script to download bulk jpg and rename ifself		##
-##				- Tarun Ghuge -					##
+##		        Bash script to download bulk jpg and rename ifself		        ##
+##				                - Tarun Ghuge -                                	##
 ##################################################################################
 
 #!/bin/bash
